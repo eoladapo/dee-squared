@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { 
+import { motion } from 'framer-motion';
+import {
   MdTrendingUp,
   MdPentagon,
   MdVideocam,
@@ -13,14 +14,32 @@ import ictBackground from '../assets/images/ict-background.png';
 import computer from '../assets/images/computer.png';
 import camera from '../assets/images/camera.png';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
 const ICTMedia = () => {
   return (
-    <main>
+    <motion.main
+      initial="initial"
+      animate="animate"
+      exit={{ opacity: 0 }}
+    >
       {/* Hero Section */}
       <section className="relative bg-[#0A2540] text-white overflow-hidden py-24 md:py-32">
         <div className="absolute inset-0 opacity-20">
-          <img 
-            className="w-full h-full object-cover" 
+          <img
+            className="w-full h-full object-cover"
             src={ictBackground}
             alt="High-tech network"
           />
@@ -50,7 +69,7 @@ const ICTMedia = () => {
       <section className="max-w-[1280px] mx-auto px-6 md:px-12 py-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Web & Software Development */}
-          <div className="md:col-span-8 bg-white p-8 rounded-xl shadow-sm border border-slate-100 flex flex-col md:flex-row gap-8 items-center">
+          <motion.div className="md:col-span-8 bg-white p-8 rounded-xl shadow-sm border border-slate-100 flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2">
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#fed488] text-[#775a19] text-xs font-semibold mb-4">
                 TECHNOLOGY
@@ -72,16 +91,19 @@ const ICTMedia = () => {
               </ul>
             </div>
             <div className="md:w-1/2 h-full min-h-[300px] bg-slate-100 rounded-lg overflow-hidden">
-              <img 
-                className="w-full h-full object-cover" 
+              <img
+                className="w-full h-full object-cover"
                 src={computer}
                 alt="Developer workstation"
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Digital Marketing */}
-          <div className="md:col-span-4 bg-[#0A2540] p-8 rounded-xl shadow-lg text-white flex flex-col justify-between">
+          <motion.div
+            className="md:col-span-4 bg-[#0A2540] p-8 rounded-xl shadow-lg text-white flex flex-col justify-between"
+            variants={fadeInUp}
+          >
             <div>
               <MdTrendingUp className="text-5xl text-[#C5A059] mb-6" />
               <h3 className="text-2xl font-semibold mb-4">Digital Marketing</h3>
@@ -95,10 +117,10 @@ const ICTMedia = () => {
                 <span className="text-[#C5A059] text-2xl">⚡</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Branding & Creative */}
-          <div className="md:col-span-4 bg-[#ebeef1] p-8 rounded-xl border border-slate-100">
+          <motion.div className="md:col-span-4 bg-[#ebeef1] p-8 rounded-xl border border-slate-100">
             <MdPentagon className="text-5xl text-[#0A2540] mb-6" />
             <h3 className="text-2xl font-semibold mb-4 text-[#0A2540]">Branding & Visual Identity</h3>
             <p className="text-[#43474d] mb-6">
@@ -107,13 +129,16 @@ const ICTMedia = () => {
             <a className="text-[#C5A059] font-medium flex items-center gap-1 hover:underline" href="#">
               View Brand Packages <MdOpenInNew className="text-sm" />
             </a>
-          </div>
+          </motion.div>
 
           {/* Media Production & Photography */}
-          <div className="md:col-span-8 bg-white p-8 rounded-xl shadow-sm border border-slate-100 grid md:grid-cols-2 gap-8">
+          <motion.div
+            className="md:col-span-8 bg-white p-8 rounded-xl shadow-sm border border-slate-100 grid md:grid-cols-2 gap-8"
+            variants={fadeInUp}
+          >
             <div className="relative rounded-lg overflow-hidden h-64 md:h-full">
-              <img 
-                className="w-full h-full object-cover" 
+              <img
+                className="w-full h-full object-cover"
                 src={camera}
                 alt="Media production set"
               />
@@ -134,12 +159,18 @@ const ICTMedia = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="bg-white py-24 border-y border-slate-100">
+      <motion.section
+        className="bg-white py-24 border-y border-slate-100"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
           <div>
             <p className="text-4xl md:text-5xl font-bold text-[#C5A059] mb-2">150+</p>
@@ -158,10 +189,16 @@ const ICTMedia = () => {
             <p className="text-sm font-medium text-[#43474d] uppercase tracking-widest">Client Support</p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="max-w-[1280px] mx-auto px-6 md:px-12 py-24">
+      <motion.section
+        className="max-w-[1280px] mx-auto px-6 md:px-12 py-24"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="bg-[#e5e8eb] rounded-xl p-8 md:p-16 flex flex-col md:flex-row justify-between items-center gap-8 relative overflow-hidden">
           <div className="relative z-10 text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#0A2540]">
@@ -172,13 +209,13 @@ const ICTMedia = () => {
             </p>
           </div>
           <div className="relative z-10 flex flex-col gap-4 w-full md:w-auto">
-            <Link 
+            <Link
               to="/contact"
               className="bg-[#0A2540] text-white px-10 py-5 rounded-lg font-medium hover:bg-black transition-all shadow-xl text-center"
             >
               Start a Digital Project
             </Link>
-            <Link 
+            <Link
               to="/contact"
               className="bg-white text-[#0A2540] border border-slate-200 px-10 py-5 rounded-lg font-medium hover:bg-slate-50 transition-all text-center"
             >
@@ -186,8 +223,8 @@ const ICTMedia = () => {
             </Link>
           </div>
         </div>
-      </section>
-    </main>
+      </motion.section>
+    </motion.main>
   );
 };
 

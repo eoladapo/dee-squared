@@ -1,42 +1,77 @@
 import { Link } from 'react-router-dom';
-import { 
-  MdVisibility, 
-  MdRocketLaunch, 
-  MdVerified, 
-  MdWork, 
-  MdLightbulb, 
-  MdSentimentSatisfied 
+import { motion } from 'framer-motion';
+import {
+  MdVisibility,
+  MdRocketLaunch,
+  MdVerified,
+  MdWork,
+  MdLightbulb,
+  MdSentimentSatisfied
 } from 'react-icons/md';
 import about1 from '../assets/images/about1.png';
 import about2 from '../assets/images/about2.png';
 import aboutBackground from '../assets/images/aboutpage-background.png';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 const About = () => {
   return (
-    <main>
+    <motion.main
+      initial="initial"
+      animate="animate"
+      exit={{ opacity: 0 }}
+    >
       {/* Hero Section */}
-      <section className="relative bg-[#0A2540] h-[500px] flex items-center overflow-hidden">
+      <motion.section
+        className="relative bg-[#0A2540] h-[500px] flex items-center overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="absolute inset-0 z-0">
-          <img 
-            className="w-full h-full object-cover opacity-30" 
+          <img
+            className="w-full h-full object-cover opacity-30"
             src={aboutBackground}
             alt="Modern skyscraper"
           />
         </div>
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-12 w-full">
-          <div className="max-w-2xl">
+          <motion.div
+            className="max-w-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Building the Future of African Excellence
             </h1>
             <p className="text-base text-[#768dad] max-w-lg">
               Defining global standards in multi-sector infrastructure, consulting, and sustainable development.
             </p>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Company Overview */}
-      <section className="py-24 max-w-[1280px] mx-auto px-6 md:px-12">
+      <motion.section
+        className="py-24 max-w-[1280px] mx-auto px-6 md:px-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <span className="text-[#C5A059] text-xs font-semibold uppercase tracking-widest block mb-4">
@@ -64,17 +99,23 @@ const About = () => {
           </div>
 
           <div className="relative h-[450px] rounded-lg overflow-hidden shadow-lg border border-white/20">
-            <img 
-              className="w-full h-full object-cover" 
+            <img
+              className="w-full h-full object-cover"
               src={about1}
               alt="Corporate boardroom"
             />
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Mission & Vision Bento Grid */}
-      <section className="bg-[#ebeef1] py-24">
+      <motion.section
+        className="bg-[#ebeef1] py-24"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Vision Card */}
@@ -104,7 +145,7 @@ const About = () => {
                 <h4 className="text-2xl font-semibold mb-2">Ready to partner with us?</h4>
                 <p className="opacity-90">Let's build sustainable solutions together across the continent.</p>
               </div>
-              <Link 
+              <Link
                 to="/contact"
                 className="bg-[#000f22] text-white px-10 py-4 rounded-lg font-medium uppercase tracking-wider hover:bg-black transition-all"
               >
@@ -113,18 +154,34 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Core Values */}
-      <section className="py-24 max-w-[1280px] mx-auto px-6 md:px-12 text-center">
+      <motion.section
+        className="py-24 max-w-[1280px] mx-auto px-6 md:px-12 text-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <span className="text-[#C5A059] text-xs font-semibold uppercase tracking-widest block mb-4">
           Foundational Principles
         </span>
         <h2 className="text-3xl font-semibold text-[#000f22] mb-12">Our Core Values</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+        >
           {/* Value 1 */}
-          <div className="group p-8 bg-white border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+          <motion.div
+            className="group p-8 bg-white border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            variants={fadeInUp}
+            whileHover={{ y: -5 }}
+          >
             <div className="w-16 h-16 bg-[#ebeef1] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#C5A059]/10 transition-colors">
               <MdVerified className="text-[#000f22] text-4xl group-hover:text-[#C5A059]" />
             </div>
@@ -132,10 +189,14 @@ const About = () => {
             <p className="text-[#43474d]">
               Upholding the highest ethical standards in every transaction and partnership.
             </p>
-          </div>
+          </motion.div>
 
           {/* Value 2 */}
-          <div className="group p-8 bg-white border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+          <motion.div
+            className="group p-8 bg-white border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            variants={fadeInUp}
+            whileHover={{ y: -5 }}
+          >
             <div className="w-16 h-16 bg-[#ebeef1] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#C5A059]/10 transition-colors">
               <MdWork className="text-[#000f22] text-4xl group-hover:text-[#C5A059]" />
             </div>
@@ -143,10 +204,14 @@ const About = () => {
             <p className="text-[#43474d]">
               Executing every project with specialized expertise and disciplined precision.
             </p>
-          </div>
+          </motion.div>
 
           {/* Value 3 */}
-          <div className="group p-8 bg-white border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+          <motion.div
+            className="group p-8 bg-white border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            variants={fadeInUp}
+            whileHover={{ y: -5 }}
+          >
             <div className="w-16 h-16 bg-[#ebeef1] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#C5A059]/10 transition-colors">
               <MdLightbulb className="text-[#000f22] text-4xl group-hover:text-[#C5A059]" />
             </div>
@@ -154,10 +219,14 @@ const About = () => {
             <p className="text-[#43474d]">
               Continuously evolving our methodologies to solve the challenges of tomorrow.
             </p>
-          </div>
+          </motion.div>
 
           {/* Value 4 */}
-          <div className="group p-8 bg-white border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+          <motion.div
+            className="group p-8 bg-white border border-slate-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+            variants={fadeInUp}
+            whileHover={{ y: -5 }}
+          >
             <div className="w-16 h-16 bg-[#ebeef1] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#C5A059]/10 transition-colors">
               <MdSentimentSatisfied className="text-[#000f22] text-4xl group-hover:text-[#C5A059]" />
             </div>
@@ -165,15 +234,21 @@ const About = () => {
             <p className="text-[#43474d]">
               Placing our partners' success at the heart of our operations and strategy.
             </p>
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="relative h-[400px] flex items-center justify-center text-center px-6">
+      <motion.section
+        className="relative h-[400px] flex items-center justify-center text-center px-6"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="absolute inset-0 z-0">
-          <img 
-            className="w-full h-full object-cover brightness-[0.2]" 
+          <img
+            className="w-full h-full object-cover brightness-[0.2]"
             src={about2}
             alt="Architectural blueprints"
           />
@@ -183,19 +258,25 @@ const About = () => {
             Ready to define the next chapter of growth?
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="w-full sm:w-auto bg-[#C5A059] text-white px-10 py-4 rounded-lg font-medium uppercase tracking-widest hover:brightness-110">
-              Download Profile
-            </button>
-            <Link 
+            {/* <button className="w-full sm:w-auto bg-[#C5A059] text-white px-10 py-4 rounded-lg font-medium uppercase tracking-widest hover:brightness-110">
+              Get a proposal
+            </button> */}
+            <Link
               to="/contact"
-              className="w-full sm:w-auto border-2 border-white text-white px-10 py-4 rounded-lg font-medium uppercase tracking-widest hover:bg-white hover:text-[#000f22] transition-all"
+              className="bg-[#C5A059] text-white px-10 py-4 rounded-lg font-semibold uppercase hover:shadow-xl transition-all"
+            >
+              Get a Proposal
+            </Link>
+            <Link
+              to="/contact"
+              className="w-full sm:w-auto border-2 border-white text-white px-8 py-4 rounded-lg font-medium uppercase tracking-widest hover:bg-white hover:text-[#000f22] transition-all"
             >
               Contact Sales
             </Link>
           </div>
         </div>
-      </section>
-    </main>
+      </motion.section>
+    </motion.main>
   );
 };
 

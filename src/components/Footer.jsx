@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="bg-[#0A2540] text-white w-full rounded-none border-t border-white/10">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 py-16 px-6 md:px-12 max-w-[1280px] mx-auto w-full">
         <div className="space-y-6">
-          <img src={logo} alt="DEE SQUARED" className="h-16 w-auto object-contain brightness-0 invert" />
+          <img src={logo} alt="DEE SQUARED" className="h-24 w-auto object-contain brightness-0 invert" />
           <p className="text-white/70 max-w-xs text-sm">
             A leading multi-service company delivering integrated solutions across Africa's most vital sectors.
           </p>
@@ -94,7 +94,7 @@ const Footer = () => {
       </div>
 
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-8 border-t border-white/10 text-center md:text-left text-white/50 text-xs">
-        © 2024 DEE SQUARED CONTINENTAL LIMITED. All rights reserved.
+        © 2026 DEE SQUARED CONTINENTAL LIMITED. All rights reserved.
       </div>
     </footer>
   );

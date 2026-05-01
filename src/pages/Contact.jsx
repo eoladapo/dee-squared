@@ -1,29 +1,60 @@
-import { 
-  MdLocationOn, 
-  MdContactSupport, 
-  MdSchedule, 
-  MdPhoneInTalk, 
-  MdMail 
+import { motion } from 'framer-motion';
+import {
+  MdLocationOn,
+  MdContactSupport,
+  MdSchedule
 } from 'react-icons/md';
 import contactImage from '../assets/images/contact.png';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 const Contact = () => {
   return (
-    <main className="max-w-[1280px] mx-auto px-6 md:px-12 py-24">
+    <motion.main
+      className="max-w-[1280px] mx-auto px-6 md:px-12 py-24"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       {/* Hero Section */}
-      <section className="mb-24 text-center md:text-left">
+      <motion.section
+        className="mb-24 text-center md:text-left"
+        {...fadeInUp}
+      >
         <h1 className="text-4xl md:text-5xl font-bold text-[#000f22] mb-6">Get in Touch</h1>
         <p className="text-base text-[#43474d] max-w-2xl">
           Connect with DEE SQUARED CONTINENTAL LIMITED. Our global network is ready to support your infrastructure, consulting, and logistics needs with professional excellence.
         </p>
-      </section>
+      </motion.section>
 
       {/* Main Layout: Bento Grid Style */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <motion.div
+        className="grid grid-cols-1 lg:grid-cols-12 gap-6"
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+      >
         {/* Contact Information Cards */}
         <div className="lg:col-span-5 grid grid-cols-1 gap-6">
           {/* Address Card */}
-          <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200 flex gap-6">
+          <motion.div
+            className="bg-white p-8 rounded-lg shadow-sm border border-slate-200 flex gap-6"
+            variants={fadeInUp}
+          >
             <div className="w-12 h-12 bg-[#fed488] rounded-full flex items-center justify-center text-[#775a19] shrink-0">
               <MdLocationOn className="w-6 h-6" />
             </div>
@@ -35,10 +66,13 @@ const Contact = () => {
                 Abuja, Nigeria
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Phone & Email Card */}
-          <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200 flex gap-6">
+          <motion.div
+            className="bg-white p-8 rounded-lg shadow-sm border border-slate-200 flex gap-6"
+            variants={fadeInUp}
+          >
             <div className="w-12 h-12 bg-[#fed488] rounded-full flex items-center justify-center text-[#775a19] shrink-0">
               <MdContactSupport className="w-6 h-6" />
             </div>
@@ -47,10 +81,13 @@ const Contact = () => {
               <p className="text-[#43474d] mb-1 font-medium">+234 (0) 800 123 4567</p>
               <p className="text-[#43474d]">contact@deesquared.com</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Hours Card */}
-          <div className="bg-[#0A2540] p-8 rounded-lg shadow-sm text-white">
+          <motion.div
+            className="bg-[#0A2540] p-8 rounded-lg shadow-sm text-white"
+            variants={fadeInUp}
+          >
             <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
               <MdSchedule className="w-6 h-6" />
               Business Hours
@@ -65,11 +102,11 @@ const Contact = () => {
                 <span>9:00 AM - 2:00 PM</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Contact Form Card */}
-        <div className="lg:col-span-7 bg-white p-8 md:p-12 rounded-lg shadow-sm border border-slate-200">
+        <motion.div className="lg:col-span-7 bg-white p-8 md:p-12 rounded-lg shadow-sm border border-slate-200">
           <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -116,11 +153,17 @@ const Contact = () => {
               Send Message
             </button>
           </form>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Map Section */}
-      <section className="mt-24">
+      <motion.section
+        className="mt-24"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="relative w-full h-[450px] rounded-lg overflow-hidden border border-slate-200 shadow-sm group">
           <img
             className="w-full h-full object-cover grayscale contrast-125 opacity-40"
@@ -140,8 +183,8 @@ const Contact = () => {
             </p>
           </div>
         </div>
-      </section>
-    </main>
+      </motion.section>
+    </motion.main>
   );
 };
 

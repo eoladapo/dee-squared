@@ -1,18 +1,40 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { MdCheckCircle, MdEco, MdDescription } from 'react-icons/md';
 import importBackground from '../assets/images/import-background.png';
 import import1 from '../assets/images/import1.png';
 import import2 from '../assets/images/import2.png';
 import import3 from '../assets/images/import3.png';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
 const ImportExport = () => {
   return (
-    <main>
+    <motion.main
+      initial="initial"
+      animate="animate"
+      exit={{ opacity: 0 }}
+    >
       {/* Hero Section */}
-      <section className="relative h-[614px] flex items-center overflow-hidden bg-[#0A2540]">
+      <motion.section
+        className="relative h-[614px] flex items-center overflow-hidden bg-[#0A2540]"
+        {...fadeInUp}
+      >
         <div className="absolute inset-0 z-0">
-          <img 
-            className="w-full h-full object-cover opacity-40" 
+          <img
+            className="w-full h-full object-cover opacity-40"
             src={importBackground}
             alt="Global Import & Export"
           />
@@ -33,17 +55,32 @@ const ImportExport = () => {
             </button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Service Grid */}
-      <section className="py-24 bg-[#f7fafd]">
+      <motion.section
+        className="py-24 bg-[#f7fafd]"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="max-w-[1280px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-12 gap-6"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
             {/* Importation of general goods */}
-            <div className="md:col-span-8 bg-white p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-8 items-center">
+            <motion.div
+              className="md:col-span-8 bg-white p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-8 items-center"
+              variants={fadeInUp}
+            >
               <div className="w-full md:w-1/2">
-                <img 
-                  className="w-full h-64 object-cover rounded-lg" 
+                <img
+                  className="w-full h-64 object-cover rounded-lg"
                   src={import1}
                   alt="Importation of general goods"
                 />
@@ -66,10 +103,13 @@ const ImportExport = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </motion.div>
 
             {/* Export of commodities */}
-            <div className="md:col-span-4 bg-[#0A2540] p-8 rounded-xl shadow-lg flex flex-col justify-between">
+            <motion.div
+              className="md:col-span-4 bg-[#0A2540] p-8 rounded-xl shadow-lg flex flex-col justify-between"
+              variants={fadeInUp}
+            >
               <div>
                 <MdEco className="text-[#C5A059] text-5xl mb-6" />
                 <h3 className="text-2xl font-semibold text-white mb-4">
@@ -79,15 +119,18 @@ const ImportExport = () => {
                   Facilitating the outbound movement of raw materials and agricultural assets to international processing hubs.
                 </p>
               </div>
-              <img 
-                className="w-full h-32 object-cover rounded-lg opacity-80" 
+              <img
+                className="w-full h-32 object-cover rounded-lg opacity-80"
                 src={import2}
                 alt="Export commodities"
               />
-            </div>
+            </motion.div>
 
             {/* Trade Facilitation */}
-            <div className="md:col-span-4 bg-[#e5e8eb] p-8 rounded-xl border border-slate-200">
+            <motion.div
+              className="md:col-span-4 bg-[#e5e8eb] p-8 rounded-xl border border-slate-200"
+              variants={fadeInUp}
+            >
               <div className="bg-white w-12 h-12 rounded-lg flex items-center justify-center mb-6 shadow-sm">
                 <MdDescription className="text-[#0A2540] text-2xl" />
               </div>
@@ -97,10 +140,13 @@ const ImportExport = () => {
               <p className="text-[#43474d]">
                 Navigating complex regulatory landscapes and customs documentation to ensure compliance and rapid border clearance.
               </p>
-            </div>
+            </motion.div>
 
             {/* Storage Handling (Bento style) */}
-            <div className="md:col-span-8 bg-white p-8 rounded-xl shadow-sm border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              className="md:col-span-8 bg-white p-8 rounded-xl shadow-sm border border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-8"
+              variants={fadeInUp}
+            >
               <div>
                 <h3 className="text-2xl font-semibold text-[#0A2540] mb-4">
                   Storage & Handling
@@ -119,15 +165,15 @@ const ImportExport = () => {
                   </div>
                 </div>
               </div>
-              <img 
-                className="w-full h-full object-cover rounded-lg" 
+              <img
+                className="w-full h-full object-cover rounded-lg"
                 src={import3}
                 alt="Storage and handling"
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Stats Section */}
       <section className="py-24 border-y border-slate-200">
@@ -154,7 +200,7 @@ const ImportExport = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24">
+      <motion.section className="py-24">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="bg-[#0A2540] rounded-2xl p-16 relative overflow-hidden">
             <div className="absolute right-0 top-0 w-1/3 h-full bg-[#C5A059] opacity-10 skew-x-[-20deg] translate-x-20"></div>
@@ -166,7 +212,7 @@ const ImportExport = () => {
                 Our trade experts are ready to design a custom logistics strategy that optimizes your supply chain and minimizes operational overhead.
               </p>
               <div className="flex flex-col md:flex-row justify-center gap-4">
-                <Link 
+                <Link
                   to="/contact"
                   className="bg-[#C5A059] text-white px-10 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#0A2540] transition-all"
                 >
@@ -179,8 +225,8 @@ const ImportExport = () => {
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </motion.section>
+    </motion.main>
   );
 };
 

@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { 
-  MdBusinessCenter, 
-  MdInventory2, 
-  MdGroups, 
-  MdSchool, 
+import { motion } from 'framer-motion';
+import {
+  MdBusinessCenter,
+  MdInventory2,
+  MdGroups,
+  MdSchool,
   MdCheckCircle,
   MdArrowForward,
   MdChevronRight
@@ -11,9 +12,27 @@ import {
 import consultancy from '../assets/images/consultancy.png';
 import consultancy1 from '../assets/images/consultancy1.png';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 const Consultancy = () => {
   return (
-    <main>
+    <motion.main
+      initial="initial"
+      animate="animate"
+      exit={{ opacity: 0 }}
+    >
       {/* Breadcrumbs */}
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 pt-8">
         <nav className="flex items-center space-x-2 text-xs font-semibold text-[#43474d]">
@@ -26,25 +45,34 @@ const Consultancy = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="max-w-[1280px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <motion.section
+        className="max-w-[1280px] mx-auto px-6 md:px-12 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        {...fadeInUp}
+      >
         <div>
           <div className="inline-block px-3 py-1 bg-[#fed488] text-[#785a1a] text-xs font-semibold rounded mb-6">
             CORPORATE EXCELLENCE
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-[#000f22] mb-6 leading-tight">
+          <h1 className="text-5xl md:text-5xl font-bold text-[#000f22] mb-6 leading-tight">
             Consultancy, Training & Professional Services
           </h1>
           <p className="text-lg text-[#43474d] mb-8 max-w-xl">
             Empowering organizations through strategic foresight, institutional capacity building, and world-class professional advisory across multiple sectors.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="bg-[#C5A059] text-white px-8 py-4 rounded font-medium flex items-center gap-2">
+            <Link
+              to="/contact"
+              className="bg-[#C5A059] text-white px-8 py-4 rounded font-medium flex items-center gap-2 hover:shadow-lg transition-all"
+            >
               Enroll / Partner With Us
               <MdArrowForward />
-            </button>
-            <button className="border border-[#0A2540] text-[#0A2540] px-8 py-4 rounded font-medium hover:bg-[#0A2540] hover:text-white transition-all">
+            </Link>
+            <a
+              href="#enrollment"
+              className="border border-[#0A2540] text-[#0A2540] px-8 py-4 rounded font-medium hover:bg-[#0A2540] hover:text-white transition-all"
+            >
               View Program Calendar
-            </button>
+            </a>
           </div>
         </div>
 
@@ -61,19 +89,34 @@ const Consultancy = () => {
             <div className="text-xs tracking-widest opacity-70 uppercase">PROJECTS COMPLETED</div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Services Bento Grid */}
-      <section className="bg-[#f1f4f7] py-24">
+      <motion.section
+        className="bg-[#f1f4f7] py-24"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="mb-16">
             <h2 className="text-3xl font-semibold text-[#000f22] mb-4">Our Specializations</h2>
             <div className="h-1 w-20 bg-[#C5A059]"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-12 gap-6"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
             {/* Business & Project Consultancy */}
-            <div className="md:col-span-8 bg-white p-8 rounded border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+            <motion.div
+              className="md:col-span-8 bg-white p-8 rounded border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+              variants={fadeInUp}
+            >
               <MdBusinessCenter className="text-[#C5A059] text-5xl mb-6" />
               <h3 className="text-2xl font-semibold text-[#000f22] mb-4">Business & Project Consultancy</h3>
               <p className="text-[#43474d] mb-6">
@@ -93,10 +136,13 @@ const Consultancy = () => {
                   <MdCheckCircle className="text-[#C5A059] w-5 h-5" /> Financial Modeling
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
             {/* Supply Chain Advisory */}
-            <div className="md:col-span-4 bg-[#0A2540] p-8 rounded text-white shadow-lg">
+            <motion.div
+              className="md:col-span-4 bg-[#0A2540] p-8 rounded text-white shadow-lg"
+              variants={fadeInUp}
+            >
               <MdInventory2 className="text-[#C5A059] text-5xl mb-6" />
               <h3 className="text-2xl font-semibold mb-4 text-white">Supply Chain Advisory</h3>
               <p className="opacity-80 mb-6">
@@ -105,19 +151,25 @@ const Consultancy = () => {
               <a className="text-[#C5A059] font-medium flex items-center gap-2 hover:underline" href="#">
                 Learn more <MdArrowForward />
               </a>
-            </div>
+            </motion.div>
 
             {/* Leadership Capacity Building */}
-            <div className="md:col-span-4 bg-white p-8 rounded border border-slate-100 shadow-sm">
+            <motion.div
+              className="md:col-span-4 bg-white p-8 rounded border border-slate-100 shadow-sm"
+              variants={fadeInUp}
+            >
               <MdGroups className="text-[#C5A059] text-5xl mb-6" />
               <h3 className="text-2xl font-semibold text-[#000f22] mb-4">Leadership Building</h3>
               <p className="text-[#43474d]">
                 Nurturing the next generation of executives through immersive leadership development programs and mentorship.
               </p>
-            </div>
+            </motion.div>
 
             {/* Training Programs */}
-            <div className="md:col-span-8 bg-white p-8 rounded border border-slate-100 shadow-sm relative overflow-hidden group">
+            <motion.div
+              className="md:col-span-8 bg-white p-8 rounded border border-slate-100 shadow-sm relative overflow-hidden group"
+              variants={fadeInUp}
+            >
               <div className="flex flex-col md:flex-row gap-8 h-full">
                 <div className="flex-1">
                   <MdSchool className="text-[#C5A059] text-5xl mb-6" />
@@ -139,13 +191,13 @@ const Consultancy = () => {
                   />
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Stats Highlight Section */}
-      <section className="max-w-[1280px] mx-auto px-6 md:px-12 py-24">
+      <motion.section className="max-w-[1280px] mx-auto px-6 md:px-12 py-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           <div className="p-8 border-r border-slate-100 last:border-0">
             <div className="text-[#C5A059] text-5xl font-bold mb-2">98%</div>
@@ -160,17 +212,24 @@ const Consultancy = () => {
             <div className="text-sm text-[#43474d] uppercase tracking-widest">Global Partners</div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA / Enrollment Section */}
-      <section className="bg-[#0A2540] py-24 text-white text-center">
+      <motion.section
+        className="bg-[#0A2540] py-24 text-white text-center"
+        id="enrollment"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="max-w-[800px] mx-auto px-6">
           <h2 className="text-4xl font-bold mb-8">Ready to Elevate Your Organization?</h2>
           <p className="text-base text-[#768dad] mb-12">
             Join hundreds of leading institutions that have transformed their operational performance and leadership culture with DEE SQUARED.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link 
+            <Link
               to="/contact"
               className="bg-[#C5A059] text-white px-12 py-5 rounded-lg font-medium text-lg"
             >
@@ -181,8 +240,8 @@ const Consultancy = () => {
             </button>
           </div>
         </div>
-      </section>
-    </main>
+      </motion.section>
+    </motion.main>
   );
 };
 

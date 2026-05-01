@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import RootLayout from './pages/RootLayout';
 import Home from './pages/Home';
 import About from './pages/About';

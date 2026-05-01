@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { 
+import { motion } from 'framer-motion';
+import {
   MdHandshake,
   MdVerifiedUser,
   MdInventory2,
@@ -14,14 +15,24 @@ import supplychain from '../assets/images/supplychain.png';
 import supplychain1 from '../assets/images/supplychain1.png';
 import supplychain2 from '../assets/images/supplychain2.png';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" }
+};
+
 const SupplyChain = () => {
   return (
-    <main>
+    <motion.main
+      initial="initial"
+      animate="animate"
+      exit={{ opacity: 0 }}
+    >
       {/* Hero Section */}
       <section className="relative h-[614px] flex items-center overflow-hidden bg-[#0A2540]">
         <div className="absolute inset-0 opacity-40">
-          <img 
-            className="w-full h-full object-cover" 
+          <img
+            className="w-full h-full object-cover"
             src={supplychain}
             alt="Logistics hub"
           />
@@ -85,8 +96,8 @@ const SupplyChain = () => {
               </ul>
             </div>
             <div className="flex-1 rounded-lg overflow-hidden">
-              <img 
-                className="w-full h-full object-cover" 
+              <img
+                className="w-full h-full object-cover"
                 src={supplychain1}
                 alt="Business negotiation"
               />
@@ -110,8 +121,8 @@ const SupplyChain = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  className="w-full h-full object-cover" 
+                <img
+                  className="w-full h-full object-cover"
                   src={supplychain2}
                   alt="Warehouse interior"
                 />
@@ -227,7 +238,7 @@ const SupplyChain = () => {
               </p>
             </div>
             <div className="relative z-10 shrink-0">
-              <Link 
+              <Link
                 to="/contact"
                 className="bg-[#C5A059] text-[#0A2540] px-10 py-5 rounded-lg text-xl font-semibold hover:scale-105 transition-transform shadow-xl inline-block"
               >
@@ -237,7 +248,7 @@ const SupplyChain = () => {
           </div>
         </div>
       </section>
-    </main>
+    </motion.main>
   );
 };
 

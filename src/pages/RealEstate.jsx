@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { 
+import { motion } from 'framer-motion';
+import {
   MdSell,
   MdAnalytics,
   MdDomain,
@@ -13,14 +14,24 @@ import realestateBackground from '../assets/images/realestate-backgroun.png';
 import realestate1 from '../assets/images/realestate1.png';
 import person1 from '../assets/images/person1.png';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" }
+};
+
 const RealEstate = () => {
   return (
-    <main>
+    <motion.main
+      initial="initial"
+      animate="animate"
+      exit={{ opacity: 0 }}
+    >
       {/* Hero Section */}
       <section className="relative h-[614px] flex items-center overflow-hidden bg-[#0A2540]">
         <div className="absolute inset-0 opacity-40">
-          <img 
-            className="w-full h-full object-cover" 
+          <img
+            className="w-full h-full object-cover"
             src={realestateBackground}
             alt="Modern skyscraper"
           />
@@ -71,8 +82,8 @@ const RealEstate = () => {
               </ul>
             </div>
             <div className="w-full md:w-1/3 h-64 rounded-lg overflow-hidden">
-              <img 
-                className="w-full h-full object-cover" 
+              <img
+                className="w-full h-full object-cover"
                 src={realestate1}
                 alt="Modern office interior"
               />
@@ -157,7 +168,7 @@ const RealEstate = () => {
               Our seasoned consultants are ready to help you navigate the complexities of property development and investment.
             </p>
             <div>
-              <Link 
+              <Link
                 to="/contact"
                 className="inline-block bg-[#C5A059] text-white px-10 py-4 rounded-lg font-medium hover:bg-[#b08e4d] transition-all shadow-lg active:scale-[0.98]"
               >
@@ -166,15 +177,15 @@ const RealEstate = () => {
             </div>
           </div>
           <div className="w-full md:w-2/5 relative min-h-[300px]">
-            <img 
-              className="w-full h-full object-cover" 
+            <img
+              className="w-full h-full object-cover"
               src={person1}
               alt="Property consultant"
             />
           </div>
         </div>
       </section>
-    </main>
+    </motion.main>
   );
 };
 

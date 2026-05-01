@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { 
+import { motion } from 'framer-motion';
+import {
   MdArchitecture,
   MdDiamond,
   MdInventory2,
@@ -11,9 +12,20 @@ import {
 import contract from '../assets/images/contract.png';
 import contract1 from '../assets/images/contract1.png';
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: "easeOut" }
+};
+
 const GeneralContracts = () => {
   return (
-    <main className="max-w-[1280px] mx-auto px-6 md:px-12 py-12">
+    <motion.main
+      className="max-w-[1280px] mx-auto px-6 md:px-12 py-12"
+      initial="initial"
+      animate="animate"
+      exit={{ opacity: 0 }}
+    >
       {/* Breadcrumbs */}
       <nav className="flex items-center space-x-2 text-xs text-[#43474d] mb-8">
         <span>Services</span>
@@ -41,9 +53,9 @@ const GeneralContracts = () => {
           </div>
         </div>
         <div className="relative h-[450px] rounded-xl overflow-hidden shadow-xl">
-          <img 
-            alt="Global Logistics and Supply" 
-            className="w-full h-full object-cover" 
+          <img
+            alt="Global Logistics and Supply"
+            className="w-full h-full object-cover"
             src={contract}
           />
         </div>
@@ -87,9 +99,9 @@ const GeneralContracts = () => {
               </ul>
             </div>
             <div className="h-48 rounded-lg overflow-hidden">
-              <img 
-                alt="Engineering Contract" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              <img
+                alt="Engineering Contract"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 src={contract1}
               />
             </div>
@@ -167,17 +179,17 @@ const GeneralContracts = () => {
               <form className="space-y-4">
                 <div>
                   <label className="block text-sm text-[#181c1e] mb-2">Full Name</label>
-                  <input 
-                    className="w-full bg-[#f1f4f7] border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-[#0A2540] outline-none" 
-                    placeholder="John Doe" 
+                  <input
+                    className="w-full bg-[#f1f4f7] border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-[#0A2540] outline-none"
+                    placeholder="John Doe"
                     type="text"
                   />
                 </div>
                 <div>
                   <label className="block text-sm text-[#181c1e] mb-2">Corporate Email</label>
-                  <input 
-                    className="w-full bg-[#f1f4f7] border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-[#0A2540] outline-none" 
-                    placeholder="john@company.com" 
+                  <input
+                    className="w-full bg-[#f1f4f7] border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-[#0A2540] outline-none"
+                    placeholder="john@company.com"
                     type="email"
                   />
                 </div>
@@ -190,8 +202,8 @@ const GeneralContracts = () => {
                     <option>Bulk Distribution</option>
                   </select>
                 </div>
-                <button 
-                  className="w-full bg-[#C5A059] text-white py-4 rounded-lg font-medium shadow-md hover:bg-[#b08d4b] transition-colors mt-4" 
+                <button
+                  className="w-full bg-[#C5A059] text-white py-4 rounded-lg font-medium shadow-md hover:bg-[#b08d4b] transition-colors mt-4"
                   type="button"
                 >
                   Submit Inquiry
@@ -201,7 +213,7 @@ const GeneralContracts = () => {
           </div>
         </div>
       </section>
-    </main>
+    </motion.main>
   );
 };
 

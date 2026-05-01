@@ -26,45 +26,44 @@ const Navbar = () => {
     <header className="bg-white/95 backdrop-blur-md text-[#0A2540] font-inter tracking-tight font-medium sticky top-0 border-b border-slate-100 shadow-sm z-50">
       <div className="flex justify-between items-center h-20 px-6 md:px-12 max-w-[1280px] mx-auto w-full">
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="DEE SQUARED" className="h-16 w-auto object-contain mix-blend-multiply" />
+          <img src={logo} alt="DEE SQUARED" className="h-24 w-auto object-contain mix-blend-multiply" />
         </Link>
-        
+
         <nav className="hidden md:flex items-center space-x-8">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className={`${isActive('/') ? 'text-[#C5A059] border-b-2 border-[#C5A059] pb-1 font-medium' : 'text-[#0A2540]/70 hover:text-[#0A2540] transition-colors'}`}
           >
             Home
           </Link>
-          <Link 
-            to="/about" 
+          <Link
+            to="/about"
             className={`${isActive('/about') ? 'text-[#C5A059] border-b-2 border-[#C5A059] pb-1 font-medium' : 'text-[#0A2540]/70 hover:text-[#0A2540] transition-colors'}`}
           >
             About
           </Link>
-          
+
           {/* Services Dropdown */}
-          <div 
+          <div
             className="relative"
             onMouseEnter={() => setServicesDropdownOpen(true)}
             onMouseLeave={() => setServicesDropdownOpen(false)}
           >
-            <button 
+            <button
               className={`flex items-center gap-1 ${isServicesActive ? 'text-[#C5A059] border-b-2 border-[#C5A059] pb-1 font-medium' : 'text-[#0A2540]/70 hover:text-[#0A2540] transition-colors'}`}
             >
               Services
               <HiChevronDown className={`w-4 h-4 transition-transform ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
-            
+
             {servicesDropdownOpen && (
               <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-slate-100 py-2 animate-in fade-in slide-in-from-top-2 duration-200">
                 {services.map((service) => (
                   <Link
                     key={service.path}
                     to={service.path}
-                    className={`block px-4 py-3 hover:bg-[#C5A059]/10 transition-colors ${
-                      location.pathname === service.path ? 'text-[#C5A059] font-medium bg-[#C5A059]/5' : 'text-[#0A2540]/70'
-                    }`}
+                    className={`block px-4 py-3 hover:bg-[#C5A059]/10 transition-colors ${location.pathname === service.path ? 'text-[#C5A059] font-medium bg-[#C5A059]/5' : 'text-[#0A2540]/70'
+                      }`}
                   >
                     {service.name}
                   </Link>
@@ -72,23 +71,23 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          
-          <Link 
-            to="/contact" 
+
+          <Link
+            to="/contact"
             className={`${isActive('/contact') ? 'text-[#C5A059] border-b-2 border-[#C5A059] pb-1 font-medium' : 'text-[#0A2540]/70 hover:text-[#0A2540] transition-colors'}`}
           >
             Contact
           </Link>
         </nav>
-        
+
         <div className="flex items-center gap-4">
-          <Link 
-            to="/contact" 
+          <Link
+            to="/contact"
             className="bg-[#0A2540] text-white px-6 py-2.5 rounded-lg font-medium hover:opacity-90 transition-all active:scale-[0.98]"
           >
             Inquiry
           </Link>
-          <button 
+          <button
             className="md:hidden text-[#0A2540]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -101,21 +100,21 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-slate-100 py-4 px-6">
           <nav className="flex flex-col space-y-4">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className={`${isActive('/') ? 'text-[#C5A059] font-medium' : 'text-[#0A2540]/70'}`}
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </Link>
-            <Link 
-              to="/about" 
+            <Link
+              to="/about"
               className={`${isActive('/about') ? 'text-[#C5A059] font-medium' : 'text-[#0A2540]/70'}`}
               onClick={() => setMobileMenuOpen(false)}
             >
               About
             </Link>
-            
+
             {/* Mobile Services Submenu */}
             <div>
               <button
@@ -131,9 +130,8 @@ const Navbar = () => {
                     <Link
                       key={service.path}
                       to={service.path}
-                      className={`block py-2 ${
-                        location.pathname === service.path ? 'text-[#C5A059] font-medium' : 'text-[#0A2540]/60'
-                      }`}
+                      className={`block py-2 ${location.pathname === service.path ? 'text-[#C5A059] font-medium' : 'text-[#0A2540]/60'
+                        }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {service.name}
@@ -142,9 +140,9 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            
-            <Link 
-              to="/contact" 
+
+            <Link
+              to="/contact"
               className={`${isActive('/contact') ? 'text-[#C5A059] font-medium' : 'text-[#0A2540]/70'}`}
               onClick={() => setMobileMenuOpen(false)}
             >
