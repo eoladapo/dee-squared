@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    @apply bg-[#f7fafd] text-[#181c1e] antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Logo styling - remove white background */
+.logo-no-bg {
+  mix-blend-mode: multiply;
+  filter: brightness(0) saturate(100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0A2540;
+}
