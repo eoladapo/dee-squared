@@ -60,10 +60,14 @@ const Contact = () => {
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-2">Office Address</h3>
-              <p className="text-[#43474d] leading-relaxed">
-                Plot 442, Corporate Avenue,<br />
-                Central Business District,<br />
-                Abuja, Nigeria
+              <p className="text-[#43474d] leading-relaxed pb-2">
+                No.1 Yusuf Adeoye street,  <br />
+                Idimu Lagos, Nigeria. <br />
+              </p>
+              <hr className='text-gray-300' />
+              <p className="text-[#43474d] leading-relaxed pt-2 ">
+                No 4 Ajilekege street off <br />
+                Ewe-Nla Idimu Lagos
               </p>
             </div>
           </motion.div>
@@ -78,7 +82,7 @@ const Contact = () => {
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-2">Direct Contact</h3>
-              <p className="text-[#43474d] mb-1 font-medium">+234 (0) 800 123 4567</p>
+              <p className="text-[#43474d] mb-1 font-medium">+234 (0) 813 998 8115</p>
               <p className="text-[#43474d]">contact@deesquared.com</p>
             </div>
           </motion.div>
